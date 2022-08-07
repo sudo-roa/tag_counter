@@ -2,9 +2,11 @@ import os
 import requests
 from dotenv import load_dotenv
 import collections
+import time
 
 load_dotenv()
-URL = os.environ['URL']
+URLS = os.environ['URLS'].split(',')
+
 
 def tag_extraction(text):
     tags = []
@@ -17,8 +19,10 @@ def tag_extraction(text):
                 if(text[i+j]==" " or text[i+j]==">"):
                     break
                 tag += text[i+j]
-            if(tag!="line" and tag!="rect" and tag!="circle" and tag!="ellipse" and tag!="polygon" and tag!="text" and tag!="polyline" and tag!="path"):
-                tags.append(tag)
+                if(tag=="!--"):
+                    break
+#            if(tag!="line" and tag!="rect" and tag!="circle" and tag!="ellipse" and tag!="polygon" and tag!="text" and tag!="polyline" and tag!="path"):
+            tags.append(tag)
     return tags
 
 def tag_counter(tags):
@@ -26,11 +30,15 @@ def tag_counter(tags):
     print(counts)
 
 def main():
-    res = requests.get(URL)
-    site_source = res.text
-    print(tag_extraction(site_source))
-    tags = tag_extraction(site_source)
-    tag_counter(tags)
+    print(URLS)
+    for URL in URLS:
+        res = requests.get(URL)
+        site_source = res.text
+        tags = tag_extraction(site_source)
+        tag_counter(tags)
+        time.sleep(1)
 
 if __name__=="__main__":
     main()
+
+
