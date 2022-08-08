@@ -73,6 +73,9 @@ def main():
     site_source = res.text
     tag_list = tag_extraction(site_source)
     print(tag_list)
+
+
+    
     check_appearance_tag(tag_dict, tag_list)
     tag_counter(tag_list)
     print(tag_dict)
