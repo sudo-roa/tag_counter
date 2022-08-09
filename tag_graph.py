@@ -51,7 +51,8 @@ def align_appearance_tag(tag_dict):
     y_axis = [value for value in tag_dict.values()]
     label = [key for key in tag_dict.keys()]
     plt.bar(x_axis, y_axis, tick_label=label, align="center")
-    plt.xticks(rotation=45)
+    #90°回してしまえば確実につまらない
+    plt.xticks(rotation=90)
     plt.show()
 
 # matplotlibへの描画処理
