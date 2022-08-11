@@ -2,7 +2,7 @@
 
 ## 概要
 
-## .env
+## .envの使い方
 .env
 ```
 URL='https://hoge.com'
@@ -17,3 +17,7 @@ load_dotenv()
 print(os.environ['URL'])
 ```
 
+## 参考
+
+
+## author
