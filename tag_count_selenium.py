@@ -72,7 +72,7 @@ def main():
         driver = webdriver.Firefox()
         time.sleep(1)
         driver.get(url)
-        time.sleep(10)
+        time.sleep(5)
         site_source = driver.page_source
         tag_list = tag_extraction(site_source)
         check_appearance_tag(tag_dict, tag_list)
